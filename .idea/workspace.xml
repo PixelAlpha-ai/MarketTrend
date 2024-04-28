@@ -5,22 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="54c060b0-8fb5-4004-9f10-829afefa09da" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/ADAUSDT_1h.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/AVAXUSDT_1h.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/BNBUSDT_1h.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/BTCUSDT_1h.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/DOGEUSDT_1h.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/ETHUSDT_1h.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/LINKUSDT_1h.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/MATICUSDT_1h.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/SOLUSDT_1h.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/UNIUSDT_1h.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/log_BTCUSDT_1h.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/log_ETHUSDT_1h.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataset_log_BNBUSDT_1h_testing.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataset_log_BNBUSDT_1h_training.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataset_log_BNBUSDT_1h_validation.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataset_log_BTCUSDT_1h_testing.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataset_log_BTCUSDT_1h_training.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataset_log_BTCUSDT_1h_validation.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataset_log_DOGEUSDT_1h_testing.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataset_log_DOGEUSDT_1h_training.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataset_log_DOGEUSDT_1h_validation.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataset_log_ETHUSDT_1h_testing.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataset_log_ETHUSDT_1h_training.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataset_log_ETHUSDT_1h_validation.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataset_log_LINKUSDT_1h_testing.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataset_log_LINKUSDT_1h_training.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataset_log_LINKUSDT_1h_validation.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataset_log_NEARUSDT_1h_testing.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataset_log_NEARUSDT_1h_training.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataset_log_NEARUSDT_1h_validation.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataset_log_SOLUSDT_1h_testing.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataset_log_SOLUSDT_1h_training.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataset_log_SOLUSDT_1h_validation.csv" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/df_OHLC.csv" beforeDir="false" afterPath="$PROJECT_DIR$/df_OHLC.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/generate_training_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/generate_training_data.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/run_CNN.py" beforeDir="false" afterPath="$PROJECT_DIR$/run_CNN.py" afterDir="false" />
@@ -36,24 +42,29 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 3
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
   <component name="ProjectId" id="2fcIijoz3QBOkDs4bTMERymrU1Z" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
     "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "Python.generate_training_data.executor": "Run",
-    "Python.run_CNN.executor": "Run",
+    "Python.run_CNN.executor": "Debug",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "D:/Repo/MarketTrend",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "D:/Repo/demo-repository",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -62,7 +73,30 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.run_CNN">
+    <configuration name="generate_training_data" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="MarketTrend" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/generate_training_data.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="run_CNN" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="MarketTrend" />
       <option name="ENV_FILES" value="" />
@@ -89,6 +123,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.run_CNN" />
+        <item itemvalue="Python.generate_training_data" />
       </list>
     </recent_temporary>
   </component>
@@ -108,35 +143,46 @@
       <option name="presentableId" value="Default" />
       <updated>1714094068632</updated>
       <workItem from="1714094069734" duration="6728000" />
+      <workItem from="1714104151859" duration="10067000" />
+      <workItem from="1714253381643" duration="1871000" />
+      <workItem from="1714264464906" duration="6223000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/generate_training_data.py</url>
-          <line>344</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/generate_training_data.py</url>
-          <line>360</line>
+          <line>409</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/generate_training_data.py</url>
-          <line>370</line>
+          <line>420</line>
           <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/run_CNN.py</url>
+          <line>143</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/run_CNN.py</url>
+          <line>19</line>
+          <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/MarketTrend$run_CNN.coverage" NAME="run_CNN Coverage Results" MODIFIED="1714100734371" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/MarketTrend$generate_training_data.coverage" NAME="generate_training_data Coverage Results" MODIFIED="1714097291346" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/MarketTrend$run_CNN.coverage" NAME="run_CNN Coverage Results" MODIFIED="1714271617785" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/MarketTrend$generate_training_data.coverage" NAME="generate_training_data Coverage Results" MODIFIED="1714270612016" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
