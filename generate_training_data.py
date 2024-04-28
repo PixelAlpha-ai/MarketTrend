@@ -336,7 +336,7 @@ if __name__ == '__main__':
 
     # list of name symbols
     name_symbol_list = ['BTCUSDT', 'ETHUSDT', 'BNBUSDT', 'DOGEUSDT', 'SOLUSDT', 'NEARUSDT', 'LINKUSDT']
-    name_symbol_list = ['BTCUSDT', 'SOLUSDT']
+    # name_symbol_list = ['BTCUSDT', 'SOLUSDT']
 
     # list of timeframes
     timeframe_list = ['1h', '4h', '12h', '1d']
