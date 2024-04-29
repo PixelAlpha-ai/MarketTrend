@@ -14,56 +14,62 @@ if __name__ == "__main__":
     path_data = 'C:\\data'
 
     # model parameters
-    model_name = '20240428_cross_training'
+    model_name = '20240428_debug'
     batch_size = 64
     num_initial_filters = 64
 
     # Make three folders for training, validation, and testing
-    train_folder = f'{path_data}\\data_training'
-    validation_folder = f'{path_data}\\data_validation'
-    if not os.path.exists(train_folder):
-        os.mkdir(train_folder)
-    if not os.path.exists(validation_folder):
-        os.mkdir(validation_folder)
+    master_train_folder = f'{path_data}\\data_training'
+    master_validation_folder = f'{path_data}\\data_validation'
+    master_testing_folder = f'{path_data}\\data_testing'
+    if not os.path.exists(master_train_folder):
+        os.mkdir(master_train_folder)
+    if not os.path.exists(master_validation_folder):
+        os.mkdir(master_validation_folder)
+    if not os.path.exists(master_testing_folder):
+        os.mkdir(master_testing_folder)
 
     # Parameters
     symbols = ['BTCUSDT', 'ETHUSDT', 'BNBUSDT', 'DOGEUSDT', 'SOLUSDT', 'NEARUSDT', 'LINKUSDT']
-    symbols = ['BTCUSDT', 'SOLUSDT']
+    # symbols = ['BTCUSDT', 'SOLUSDT']
     # symbols = ['BTCUSDT']
-    timeframe_list = ['1h', '4h']
+    # timeframe_list = ['1h', '4h']
     timeframe_list = ['1h']
 
     # Combine all training logs and validation logs into one master log (one for training and one for validation)
     master_train_log = pd.concat([pd.read_csv(f'{path_data}\\dataset_log_{symbol}_{timeframe}_training.csv') for symbol in symbols for timeframe in timeframe_list])
     master_validation_log = pd.concat([pd.read_csv(f'{path_data}\\dataset_log_{symbol}_{timeframe}_validation.csv') for symbol in symbols for timeframe in timeframe_list])
+    master_testing_log = pd.concat([pd.read_csv(f'{path_data}\\dataset_log_{symbol}_{timeframe}_testing.csv') for symbol in symbols for timeframe in timeframe_list])
 
     # Save the master logs
     path_master_train_log = f'{path_data}\\dataset_log_all_symbols_training.csv'
     master_train_log.to_csv(path_master_train_log, index=False)
     path_master_validation_log = f'{path_data}\\dataset_log_all_symbols_validation.csv'
     master_validation_log.to_csv(path_master_validation_log, index=False)
+    path_master_testing_log = f'{path_data}\\dataset_log_all_symbols_testing.csv'
+    master_testing_log.to_csv(path_master_testing_log, index=False)
 
     # Now combine the files into one folder, do this by looping through all the subfolders
-    # for symbol in symbols:
-    #     for timeframe in timeframe_list:
-    #         train_folder = f'{path_data}\\data_training_{symbol}_{timeframe}'
-    #         validation_folder = f'{path_data}\\data_validation_{symbol}_{timeframe}'
-    #         testing_folder = f'{path_data}\\data_testing_{symbol}_{timeframe}'
-    #
-    #         # Now copy the files from the subfolders to the master folder
-    #         for file in os.listdir(train_folder):
-    #             shutil.copy(f'{train_folder}\\{file}', f'{path_data}\\data_training')
-    #         for file in os.listdir(validation_folder):
-    #             shutil.copy(f'{validation_folder}\\{file}', f'{path_data}\\data_validation')
-    #         for file in os.listdir(testing_folder):
-    #             shutil.copy(f'{testing_folder}\\{file}', f'{path_data}\\data_testing')
+    for symbol in symbols:
+        for timeframe in timeframe_list:
+            train_folder = f'{path_data}\\data_training_{symbol}_{timeframe}'
+            validation_folder = f'{path_data}\\data_validation_{symbol}_{timeframe}'
+            testing_folder = f'{path_data}\\data_testing_{symbol}_{timeframe}'
+
+            # Now copy the files from the subfolders to the master folder
+            for file in os.listdir(train_folder):
+                shutil.copy(f'{train_folder}\\{file}', master_train_folder)
+            for file in os.listdir(validation_folder):
+                shutil.copy(f'{validation_folder}\\{file}', master_validation_folder)
+            for file in os.listdir(testing_folder):
+                shutil.copy(f'{testing_folder}\\{file}', master_testing_folder)
 
     # Initialize the DataGenerators
-    train_generator = DataGenerator(csv_file=path_master_train_log, batch_size=batch_size, folder_path=train_folder)
-    val_generator = DataGenerator(csv_file=path_master_validation_log, batch_size=batch_size, folder_path=validation_folder)
+    train_generator = DataGenerator(csv_file=path_master_train_log, batch_size=batch_size, folder_path=master_train_folder)
+    val_generator = DataGenerator(csv_file=path_master_validation_log, batch_size=batch_size, folder_path=master_validation_folder)
 
     # Extract the labels from train_generator
-    train_labels = np.array([row['label'] for _, row in train_generator.df.iterrows()])
+    # train_labels = np.array([row['label'] for _, row in train_generator.df.iterrows()])
     class_weight_dict = get_class_weight()
 
     # Load one batch of data to get the input shape

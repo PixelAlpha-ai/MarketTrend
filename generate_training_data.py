@@ -170,7 +170,12 @@ class TrainingDataGenerator:
 
         ### Calculate the return and label
         # Calculate the return (calculated as the change after num_project_length candles)
-        self.df_OHLC['return'] = self.df_OHLC['Close'].pct_change(periods=self.num_project_length)
+        # 1 - define a new array to store the close price after num_project_length candles
+        self.df_OHLC['Close_future'] = self.df_OHLC['Close'].shift(-self.num_project_length)
+        self.df_OHLC['return'] = (self.df_OHLC['Close_future'] - self.df_OHLC['Close']) / self.df_OHLC['Close']
+
+        # debug
+        # self.df_OHLC.to_csv('df_OHLC.csv')
 
         # Calculate the top and bottom 5% VaR using entire dataset's return
         VaR_top_all = self.df_OHLC['return'].quantile(0.95)
@@ -325,8 +330,8 @@ if __name__ == '__main__':
     asset_type = "crypto"
 
     # image parameters
-    num_candles = 40
-    num_project_length = 10
+    num_candles = 5
+    num_project_length = 3
     stride_size = 2
     num_rows = 60
     num_MA = 20
@@ -337,16 +342,19 @@ if __name__ == '__main__':
     # list of name symbols
     name_symbol_list = ['BTCUSDT', 'ETHUSDT', 'BNBUSDT', 'DOGEUSDT', 'SOLUSDT', 'NEARUSDT', 'LINKUSDT']
     # name_symbol_list = ['BTCUSDT', 'SOLUSDT']
+    # name_symbol_list = ['BTCUSDT']
 
     # list of timeframes
     timeframe_list = ['1h', '4h', '12h', '1d']
     timeframe_list = ['1h', '4h']
+    timeframe_list = ['1h']
 
     # list of data types
     data_type_list = ['training', 'validation', 'testing']
 
     for name_symbol in name_symbol_list:
         for timeframe in timeframe_list:
+
             # create the generator
             path_csv = f'data\\{asset_type}\\{name_symbol}_{timeframe}.csv'
             generator = TrainingDataGenerator(path_csv=path_csv,
@@ -364,11 +372,11 @@ if __name__ == '__main__':
 
             # specify the datetime_start and datetime_end for the training, validation, and testing data using a dict
             datetime_start_dict = {'training': generator.df_OHLC.index[60],
-                                   'validation': '2023-07-01 00:00:00+00:00',
-                                   'testing': '2024-01-01 00:00:00+00:00'}
+                                   'validation': '2022-04-01 00:00:00+00:00',
+                                   'testing': '2023-04-01 00:00:00+00:00'}
 
-            datetime_end_dict = {'training': '2023-05-31 00:00:00+00:00',
-                                 'validation': '2023-11-30 00:00:00+00:00',
+            datetime_end_dict = {'training': '2022-03-01 00:00:00+00:00',
+                                 'validation': '2023-03-01 00:00:00+00:00',
                                  'testing': '2024-04-15 00:00:00+00:00'}
 
             # Now gereate the training, validation, and testing data
@@ -390,8 +398,11 @@ if __name__ == '__main__':
                                                             datetime_end=datetime_end,
                                                             stride_size=stride_size)
 
+                # save the df_OHLC temporarily
+                generator.df_OHLC.to_csv('temp.csv')
+
                 # save the log
-                df_dataset_log.to_csv(f'dataset_log_{name_symbol}_{timeframe}_{type_data}.csv')
+                df_dataset_log.to_csv(f'{path_data}\dataset_log_{name_symbol}_{timeframe}_{type_data}.csv')
 
 
 
@@ -427,3 +438,14 @@ if __name__ == '__main__':
     #                                                     datetime_end=datetime_end_testing,
     #                                                     stride_size=stride_size)
     # df_dataset_log_testing.to_csv(f'dataset_log_{name_symbol}_{timeframe}_testing.csv')
+
+
+
+    # # specify the datetime_start and datetime_end for the training, validation, and testing data using a dict
+    # datetime_start_dict = {'training': generator.df_OHLC.index[60],
+    #                        'validation': '2023-07-01 00:00:00+00:00',
+    #                        'testing': '2024-01-01 00:00:00+00:00'}
+    #
+    # datetime_end_dict = {'training': '2023-05-31 00:00:00+00:00',
+    #                      'validation': '2023-11-30 00:00:00+00:00',
+    #                      'testing': '2024-04-15 00:00:00+00:00'}

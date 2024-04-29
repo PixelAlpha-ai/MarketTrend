@@ -14,7 +14,7 @@ if __name__ == "__main__":
     path_data = 'C:\\data'
 
     # Model name
-    model_name = '20240428_cross_training'
+    model_name = '20240428_debug'
     batch_size = 64
 
     # Make three folders for training, validation, and testing
