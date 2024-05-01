@@ -330,8 +330,8 @@ if __name__ == '__main__':
     asset_type = "crypto"
 
     # image parameters
-    num_candles = 5
-    num_project_length = 3
+    num_candles = 60
+    num_project_length = 5
     stride_size = 2
     num_rows = 60
     num_MA = 20
