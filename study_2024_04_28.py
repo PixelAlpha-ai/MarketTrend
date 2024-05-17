@@ -136,7 +136,7 @@ if __name__ == "__main__":
         # Parameters
         symbols = ['BTCUSDT', 'ETHUSDT', 'BNBUSDT', 'DOGEUSDT', 'SOLUSDT', 'NEARUSDT', 'LINKUSDT']
         symbols = ['BTCUSDT']
-        timeframe_list = ['1h', '4h']
+        # timeframe_list = ['1h', '4h']
         timeframe_list = ['1h']
 
         # run individual tests

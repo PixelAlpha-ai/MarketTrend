@@ -8,6 +8,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/df_OHLC.csv" beforeDir="false" afterPath="$PROJECT_DIR$/df_OHLC.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/generate_training_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/generate_training_data.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/study_2024_04_28.py" beforeDir="false" afterPath="$PROJECT_DIR$/study_2024_04_28.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/temp.csv" beforeDir="false" afterPath="$PROJECT_DIR$/temp.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -53,7 +54,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "D:/Repo/MarketTrend",
+    "last_opened_file_path": "D:/QuantTrading",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -67,7 +68,7 @@
       <recent name="D:\Repo\MarketTrend" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.generate_training_data">
+  <component name="RunManager" selected="Python.study_2024_04_28">
     <configuration name="generate_training_data" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="MarketTrend" />
       <option name="ENV_FILES" value="" />
@@ -185,8 +186,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.generate_training_data" />
         <item itemvalue="Python.study_2024_04_28" />
+        <item itemvalue="Python.generate_training_data" />
         <item itemvalue="Python.test_CNN" />
         <item itemvalue="Python.train_CNN (1)" />
         <item itemvalue="Python.train_CNN" />
@@ -211,7 +212,7 @@
       <workItem from="1714094069734" duration="6728000" />
       <workItem from="1714104151859" duration="10067000" />
       <workItem from="1714253381643" duration="1871000" />
-      <workItem from="1714264464906" duration="51949000" />
+      <workItem from="1714264464906" duration="56824000" />
     </task>
     <servers />
   </component>
@@ -273,9 +274,9 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/MarketTrend$study_2024_04_28.coverage" NAME="study_2024_04_28 Coverage Results" MODIFIED="1714513942418" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/MarketTrend$study_2024_04_28.coverage" NAME="study_2024_04_28 Coverage Results" MODIFIED="1714615143567" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/MarketTrend$run_CNN.coverage" NAME="run_CNN Coverage Results" MODIFIED="1714271966910" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/MarketTrend$generate_training_data.coverage" NAME="generate_training_data Coverage Results" MODIFIED="1714513762677" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/MarketTrend$generate_training_data.coverage" NAME="generate_training_data Coverage Results" MODIFIED="1714613832116" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/MarketTrend$train_CNN__1_.coverage" NAME="train_CNN (1) Coverage Results" MODIFIED="1714333209663" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/MarketTrend$test_CNN.coverage" NAME="test_CNN Coverage Results" MODIFIED="1714348500509" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>

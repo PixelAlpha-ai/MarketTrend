@@ -331,7 +331,7 @@ if __name__ == '__main__':
 
     # image parameters
     num_candles = 60
-    num_project_length = 5
+    num_project_length = 3
     stride_size = 2
     num_rows = 60
     num_MA = 20
