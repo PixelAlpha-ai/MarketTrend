@@ -30,9 +30,9 @@ if __name__ == "__main__":
         os.mkdir(master_testing_folder)
 
     # Parameters
-    symbols = ['BTCUSDT', 'ETHUSDT', 'BNBUSDT', 'DOGEUSDT', 'SOLUSDT', 'NEARUSDT', 'LINKUSDT']
+    # symbols = ['BTCUSDT', 'ETHUSDT', 'BNBUSDT', 'DOGEUSDT', 'SOLUSDT', 'NEARUSDT', 'LINKUSDT']
     # symbols = ['BTCUSDT', 'SOLUSDT']
-    # symbols = ['BTCUSDT']
+    symbols = ['BTCUSDT']
     # timeframe_list = ['1h', '4h']
     timeframe_list = ['1h']
 
