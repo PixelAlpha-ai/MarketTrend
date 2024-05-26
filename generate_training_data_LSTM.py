@@ -2,10 +2,13 @@ import pandas as pd
 import numpy as np
 import talib
 from sklearn.preprocessing import MinMaxScaler
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.feature_selection import RFECV
+from sklearn.metrics import confusion_matrix, classification_report, ConfusionMatrixDisplay
 from keras.models import Sequential
 from keras.layers import LSTM, Dense, Dropout, Bidirectional
-from keras.utils import to_categorical
 from keras.callbacks import EarlyStopping
+import matplotlib.pyplot as plt
 import pickle
 
 class LSTMDataGenerator:
@@ -14,7 +17,7 @@ class LSTMDataGenerator:
         self.num_candles = num_candles
         self.num_project_length = num_project_length
         self.df_OHLC = None
-        self.scaler = MinMaxScaler(feature_range=(0, 1))  # Ensuring consistent scaling
+        self.scaler = None  # Will be initialized after feature selection
 
         self.read_and_preprocess_data()
 
@@ -27,10 +30,9 @@ class LSTMDataGenerator:
         df_OHLC_raw['Close_future'] = df_OHLC_raw['Close'].shift(-self.num_project_length)
         df_OHLC_raw['return'] = (df_OHLC_raw['Close_future'] - df_OHLC_raw['Close']) / df_OHLC_raw['Close']
 
-        # Calculate the top 30% of return as 1, the bottom 30% return as -1, and the rest as 0
+        # Calculate the top 30% of return as 1, and the rest as 0
         df_OHLC_raw['label'] = 0
-        df_OHLC_raw.loc[df_OHLC_raw['return'] > df_OHLC_raw['return'].quantile(0.7), 'label'] = 1
-        df_OHLC_raw.loc[df_OHLC_raw['return'] < df_OHLC_raw['return'].quantile(0.3), 'label'] = -1
+        df_OHLC_raw.loc[df_OHLC_raw['return'] > df_OHLC_raw['return'].quantile(0.55), 'label'] = 1
 
         # Calculate technical indicators
         df_OHLC_raw['RSI'] = talib.RSI(df_OHLC_raw['Close'].values, timeperiod=14)
@@ -63,11 +65,14 @@ class LSTMDataGenerator:
         self.df_OHLC = df_OHLC_raw
 
         # Select features for training
-        features = ['Close', 'deviation_20EMA', 'deviation_50EMA', 'deviation_100EMA', 'RSI', 'bollinger_coeff', 'Volume']
-        self.df_OHLC = self.df_OHLC[['label'] + features]
-        self.scaler.fit(self.df_OHLC[features])
+        self.features = ['Close', 'deviation_20EMA', 'deviation_50EMA', 'deviation_100EMA', 'RSI', 'bollinger_coeff', 'Volume']
+        self.df_OHLC = self.df_OHLC[['label'] + self.features]
 
-    def generate_sequences(self, start_idx, end_idx):
+    def fit_scaler(self, selected_features):
+        self.scaler = MinMaxScaler(feature_range=(0, 1))
+        self.scaler.fit(self.df_OHLC[selected_features])
+
+    def generate_sequences(self, start_idx, end_idx, selected_features=None):
         sequences = []
         labels = []
         for i in range(start_idx, end_idx):
@@ -75,6 +80,8 @@ class LSTMDataGenerator:
             if end_pos + self.num_project_length > len(self.df_OHLC):
                 break
             seq = self.df_OHLC.iloc[i:end_pos].drop(columns=['label'])
+            if selected_features is not None:
+                seq = seq[selected_features]
             scaled_seq = self.scaler.transform(seq)
             sequences.append(scaled_seq)
             labels.append(self.df_OHLC['label'].iloc[end_pos + self.num_project_length - 1])
@@ -92,8 +99,8 @@ class LSTMDataGenerator:
 
 if __name__ == '__main__':
     path_csv = 'data\\crypto\\BTCUSDT_1h.csv'
-    num_candles = 20
-    num_project_length = 3
+    num_candles = 60  # Use 60 time steps for consistency
+    num_project_length = 5
 
     generator = LSTMDataGenerator(path_csv, num_candles, num_project_length)
 
@@ -101,26 +108,53 @@ if __name__ == '__main__':
     len_val = int(len(generator.df_OHLC) * 0.85)
     len_test = len(generator.df_OHLC)
 
-    train_sequences, train_labels = generator.generate_sequences(0, len_train)
-    val_sequences, val_labels = generator.generate_sequences(len_train, len_val)
-    test_sequences, test_labels = generator.generate_sequences(len_val, len_test)
+    # Use RandomForest to determine feature importance
+    rf = RandomForestClassifier(n_estimators=100, random_state=42)
+    rf.fit(generator.df_OHLC[generator.features], generator.df_OHLC['label'])
+    feature_importances = pd.Series(rf.feature_importances_, index=generator.features)
+    selected_features = feature_importances.nlargest(5).index.tolist()
+    print("Selected features:", selected_features)
 
-    # Convert labels to one-hot encoding
-    train_labels = to_categorical(train_labels, num_classes=3)
-    val_labels = to_categorical(val_labels, num_classes=3)
-    test_labels = to_categorical(test_labels, num_classes=3)
+    # Fit the scaler with the selected features
+    generator.fit_scaler(selected_features)
+
+    train_sequences, train_labels = generator.generate_sequences(0, len_train, selected_features=selected_features)
+    val_sequences, val_labels = generator.generate_sequences(len_train, len_val, selected_features=selected_features)
+    test_sequences, test_labels = generator.generate_sequences(len_val, len_test, selected_features=selected_features)
+
+    # Calculate class weights to handle class imbalance
+    from sklearn.utils import class_weight
+    class_weights = class_weight.compute_class_weight('balanced', classes=np.unique(train_labels), y=train_labels)
+    class_weights = {0: class_weights[0], 1: class_weights[1] * 1.2}  # Increase weight for the minority class
 
     model = Sequential()
-    model.add(Bidirectional(LSTM(50, return_sequences=True), input_shape=(num_candles, train_sequences.shape[2])))
+    model.add(LSTM(50, return_sequences=True, input_shape=(num_candles, train_sequences.shape[2])))
     model.add(Dropout(0.2))
-    model.add(Bidirectional(LSTM(50)))
+    model.add(LSTM(50, return_sequences=True))
     model.add(Dropout(0.2))
-    model.add(Dense(3, activation='softmax'))  # Output layer for 3 classes
-    model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
+    model.add(LSTM(50, return_sequences=True))
+    model.add(Dropout(0.2))
+    model.add(LSTM(50))
+    model.add(Dropout(0.2))
+    model.add(Dense(1, activation='sigmoid'))  # Output layer for binary classification
+    model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
 
     early_stop = EarlyStopping(monitor='val_loss', patience=5, restore_best_weights=True)
 
-    model.fit(train_sequences, train_labels, epochs=50, batch_size=64, validation_data=(val_sequences, val_labels), callbacks=[early_stop])
+    model.fit(train_sequences, train_labels, epochs=100, batch_size=32, validation_data=(val_sequences, val_labels), callbacks=[early_stop], class_weight=class_weights)
 
     loss, accuracy = model.evaluate(test_sequences, test_labels)
     print(f'Test Accuracy: {accuracy:.4f}')
+
+    # Predictions
+    test_predictions = model.predict(test_sequences)
+    test_predictions = (test_predictions > 0.5).astype(int)
+
+    # Confusion Matrix
+    cm = confusion_matrix(test_labels, test_predictions)
+    cm_display = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=['Non-Positive', 'Positive'])
+    cm_display.plot(cmap=plt.cm.Blues)
+    plt.show()
+
+    # Classification Report
+    print(classification_report(test_labels, test_predictions, target_names=['Non-Positive', 'Positive']))

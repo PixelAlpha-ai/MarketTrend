@@ -5,15 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="54c060b0-8fb5-4004-9f10-829afefa09da" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/generate_training_data_LSTM.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/generate_training_data_new.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/objects_new.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/run_LSTM.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/study_2024_05_21.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/df_OHLC.csv" beforeDir="false" afterPath="$PROJECT_DIR$/df_OHLC.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/temp.csv" beforeDir="false" afterPath="$PROJECT_DIR$/temp.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/train_CNN.py" beforeDir="false" afterPath="$PROJECT_DIR$/train_CNN.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/generate_training_data_LSTM.py" beforeDir="false" afterPath="$PROJECT_DIR$/generate_training_data_LSTM.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -222,7 +215,7 @@
       <workItem from="1714264464906" duration="56824000" />
       <workItem from="1716212687222" duration="21560000" />
       <workItem from="1716589748325" duration="2737000" />
-      <workItem from="1716646690780" duration="4372000" />
+      <workItem from="1716646690780" duration="8455000" />
     </task>
     <servers />
   </component>
@@ -290,6 +283,11 @@
           <line>170</line>
           <option name="timeStamp" value="42" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/generate_training_data_LSTM.py</url>
+          <line>34</line>
+          <option name="timeStamp" value="45" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
@@ -300,7 +298,7 @@
     <SUITE FILE_PATH="coverage/MarketTrend$study_2024_05_21.coverage" NAME="study_2024_05_21 Coverage Results" MODIFIED="1716339934792" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/MarketTrend$train_CNN__1_.coverage" NAME="train_CNN (1) Coverage Results" MODIFIED="1714333209663" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/MarketTrend$test_CNN.coverage" NAME="test_CNN Coverage Results" MODIFIED="1716325591355" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/MarketTrend$generate_training_data_LSTM.coverage" NAME="generate_training_data_LSTM Coverage Results" MODIFIED="1716653676996" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/MarketTrend$generate_training_data_LSTM.coverage" NAME="generate_training_data_LSTM Coverage Results" MODIFIED="1716673051061" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/MarketTrend$generate_training_data_new.coverage" NAME="generate_training_data_new Coverage Results" MODIFIED="1716333304476" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
